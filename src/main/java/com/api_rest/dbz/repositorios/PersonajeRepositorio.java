@@ -1,6 +1,6 @@
-package com.alkemy.challenge.repositorios;
+package com.api_rest.dbz.repositorios;
 
-import com.alkemy.challenge.modelos.Personaje;
+import com.api_rest.dbz.modelos.Personaje;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonajeRepositorio extends JpaRepository<Personaje, Long> {
