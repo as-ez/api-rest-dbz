@@ -1,13 +1,13 @@
-package com.alkemy.challenge;
+package com.api_rest.dbz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AlkemyChallengeApplication {
+public class ApiRestDBZApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlkemyChallengeApplication.class, args);
+		SpringApplication.run(ApiRestDBZApplication.class, args);
 	}
 
 }
