@@ -1,4 +1,4 @@
-package com.alkemy.challenge.excepciones;
+package com.api_rest.dbz.excepciones;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
