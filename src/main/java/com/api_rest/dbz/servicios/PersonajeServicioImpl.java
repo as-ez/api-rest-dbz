@@ -1,10 +1,15 @@
-package com.alkemy.challenge.servicios;
+package com.api_rest.dbz.servicios;
 
-import com.alkemy.challenge.dto.PersonajeDTO;
-import com.alkemy.challenge.excepciones.ResourceNotFoundException;
-import com.alkemy.challenge.modelos.Personaje;
-import com.alkemy.challenge.repositorios.PersonajeRepositorio;
+import com.api_rest.dbz.dto.PersonajeDTO;
+import com.api_rest.dbz.dto.PersonajeRespuesta;
+import com.api_rest.dbz.excepciones.ResourceNotFoundException;
+import com.api_rest.dbz.modelos.Personaje;
+import com.api_rest.dbz.repositorios.PersonajeRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,9 +31,23 @@ public class PersonajeServicioImpl implements PersonajeServicio {
     }
 
     @Override
-    public List<PersonajeDTO> obtenerTodosLosPersonajes() {
-        List<Personaje> personajes = personajeRepositorio.findAll();
-        return personajes.stream().map(personaje -> mapearDTO(personaje)).collect(Collectors.toList());
+    public PersonajeRespuesta obtenerTodosLosPersonajes(int numeroDePagina, int medidaDePagina, String ordenarPor, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(ordenarPor).ascending():Sort.by(ordenarPor).descending();
+        Pageable pageable = PageRequest.of(numeroDePagina,medidaDePagina,sort);
+        Page<Personaje> personajes = personajeRepositorio.findAll(pageable);
+
+        List<Personaje> listaDePersonajes = personajes.getContent();
+        List<PersonajeDTO> contenido = listaDePersonajes.stream().map(personaje -> mapearDTO(personaje)).collect(Collectors.toList());
+
+        PersonajeRespuesta personajeRespuesta = new PersonajeRespuesta();
+        personajeRespuesta.setContenido(contenido);
+        personajeRespuesta.setNumeroPagina(personajes.getNumber());
+        personajeRespuesta.setMedidaPagina(personajes.getSize());
+        personajeRespuesta.setTotalElementos(personajes.getTotalElements());
+        personajeRespuesta.setTotalPaginas(personajes.getTotalPages());
+        personajeRespuesta.setUltima(personajes.isLast());
+
+        return personajeRespuesta;
     }
 
     @Override
