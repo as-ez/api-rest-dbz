@@ -1,4 +1,4 @@
-package com.alkemy.challenge.dto;
+package com.api_rest.dbz.dto;
 
 public class PersonajeDTO {
 
