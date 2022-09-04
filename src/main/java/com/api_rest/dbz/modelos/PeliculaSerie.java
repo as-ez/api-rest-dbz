@@ -1,4 +1,4 @@
-package com.alkemy.challenge.modelos;
+package com.api_rest.dbz.modelos;
 
 import javax.persistence.*;
 
