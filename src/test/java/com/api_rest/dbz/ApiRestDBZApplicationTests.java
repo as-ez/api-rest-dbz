@@ -1,10 +1,10 @@
-package com.alkemy.challenge;
+package com.api_rest.dbz;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AlkemyChallengeApplicationTests {
+class ApiRestDBZApplicationTests {
 
 	@Test
 	void contextLoads() {
