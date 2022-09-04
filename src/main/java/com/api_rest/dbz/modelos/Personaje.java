@@ -1,4 +1,4 @@
-package com.alkemy.challenge.modelos;
+package com.api_rest.dbz.modelos;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Personaje {
     @Column(name = "imagen", nullable = false)
     private String imagen;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
     @Column(name = "peso", nullable = false)
