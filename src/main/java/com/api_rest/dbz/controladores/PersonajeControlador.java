@@ -1,7 +1,9 @@
-package com.alkemy.challenge.controladores;
+package com.api_rest.dbz.controladores;
 
-import com.alkemy.challenge.dto.PersonajeDTO;
-import com.alkemy.challenge.servicios.PersonajeServicio;
+import com.api_rest.dbz.dto.PersonajeDTO;
+import com.api_rest.dbz.dto.PersonajeRespuesta;
+import com.api_rest.dbz.servicios.PersonajeServicio;
+import com.api_rest.dbz.utilerias.AppConstantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +19,12 @@ public class PersonajeControlador {
     private PersonajeServicio personajeServicio;
 
     @GetMapping
-    public List<PersonajeDTO> listarPersonajes() {
-        return personajeServicio.obtenerTodosLosPersonajes();
+    public PersonajeRespuesta listarPersonajes(
+            @RequestParam(value = "pageNro", defaultValue = AppConstantes.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) int numeroDePagina,
+            @RequestParam(value = "pageSize", defaultValue = AppConstantes.MEDIDA_DE_PAGINA_POR_DEFECTO, required = false) int medidaDePagina,
+            @RequestParam(value = "sortBy", defaultValue = AppConstantes.ORDENAR_POR_DEFECTO, required = false) String ordenarPor,
+            @RequestParam(value = "sortDir", defaultValue = AppConstantes.ORDENAR_DIRECCION_POR_DEFECTO, required = false) String sortDir)  {
+        return personajeServicio.obtenerTodosLosPersonajes(numeroDePagina,medidaDePagina,ordenarPor,sortDir);
     }
 
     @GetMapping("/{id}")
