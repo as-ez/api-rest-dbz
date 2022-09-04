@@ -1,13 +1,12 @@
-package com.alkemy.challenge.servicios;
+package com.api_rest.dbz.servicios;
 
-import com.alkemy.challenge.dto.PersonajeDTO;
-
-import java.util.List;
+import com.api_rest.dbz.dto.PersonajeDTO;
+import com.api_rest.dbz.dto.PersonajeRespuesta;
 
 public interface PersonajeServicio {
     public PersonajeDTO crearPersonaje(PersonajeDTO personajeDTO);
 
-    public List<PersonajeDTO> obtenerTodosLosPersonajes();
+    public PersonajeRespuesta obtenerTodosLosPersonajes(int numeroDePagina,int medidadDePagina,String ordenarPor,String sortDir);
 
     public PersonajeDTO obtenerPersonajePorId(long id);
 
