@@ -1,6 +1,8 @@
 package com.api_rest.dbz.modelos;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "personajes")
@@ -21,8 +23,8 @@ public class Personaje {
     @Column(name = "historia", nullable = false)
     private String historia;
 
-    @Column(name = "peliculasSeries", nullable = false)
-    private String peliculasSeries;
+    @OneToMany(mappedBy = "personaje",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Dialogo> dialogos = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -64,14 +66,6 @@ public class Personaje {
         this.historia = historia;
     }
 
-    public String getPeliculasSeries() {
-        return peliculasSeries;
-    }
-
-    public void setPeliculasSeries(String peliculasSeries) {
-        this.peliculasSeries = peliculasSeries;
-    }
-
     public Personaje() {
         super();
     }
@@ -83,6 +77,5 @@ public class Personaje {
         this.nombre = nombre;
         this.peso = peso;
         this.historia = historia;
-        this.peliculasSeries = peliculasSeries;
     }
 }
