@@ -7,7 +7,6 @@ public class PersonajeDTO {
     private String nombre;
     private Integer peso;
     private String historia;
-    private String peliculasSeries;
 
     public Long getId() {
         return id;
@@ -47,14 +46,6 @@ public class PersonajeDTO {
 
     public void setHistoria(String historia) {
         this.historia = historia;
-    }
-
-    public String getPeliculasSeries() {
-        return peliculasSeries;
-    }
-
-    public void setPeliculasSeries(String peliculasSeries) {
-        this.peliculasSeries = peliculasSeries;
     }
 
     public PersonajeDTO() {
