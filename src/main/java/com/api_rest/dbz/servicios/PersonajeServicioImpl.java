@@ -65,7 +65,6 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         personaje.setImagen(personajeDTO.getImagen());
         personaje.setPeso(personajeDTO.getPeso());
         personaje.setNombre(personajeDTO.getNombre());
-        personaje.setPeliculasSeries(personajeDTO.getPeliculasSeries());
         personaje.setHistoria(personajeDTO.getHistoria());
 
         Personaje personajeActualizado = personajeRepositorio.save(personaje);
@@ -87,7 +86,6 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         personajeDTO.setImagen(personaje.getImagen());
         personajeDTO.setPeso(personaje.getPeso());
         personajeDTO.setNombre(personaje.getNombre());
-        personajeDTO.setPeliculasSeries(personaje.getPeliculasSeries());
         personajeDTO.setHistoria(personaje.getHistoria());
 
         return personajeDTO;
@@ -100,7 +98,6 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         personaje.setImagen(personajeDTO.getImagen());
         personaje.setPeso(personajeDTO.getPeso());
         personaje.setNombre(personajeDTO.getNombre());
-        personaje.setPeliculasSeries(personajeDTO.getPeliculasSeries());
         personaje.setHistoria(personajeDTO.getHistoria());
 
         return personaje;
